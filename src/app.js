@@ -2,7 +2,7 @@ const expressConst = require('express');
 const cors = require('cors');
 const app = expressConst();
 //settings
-app.set('port',6000);
+app.set('port',3000);
 //middlewares, hace que dos servidores intercambien datos entre ellos
 app.use(cors());
 app.use(expressConst.json());
