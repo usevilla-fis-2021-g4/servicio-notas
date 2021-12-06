@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Okteto Deployment
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Okteto Login
+        uses: okteto/login@latest
+        with:
+          token: ${{secrets.OKTETO_TOKEN}}
+          
+          
+      - name: Okteto Pipeline
+        uses: okteto/pipeline@latest
+        with:
+         name: backendnotasdefinitivo
+         namespace: fis-mgrmanu10
+
+
+ 
+          
+    
