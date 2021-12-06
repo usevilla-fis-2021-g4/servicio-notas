@@ -9,7 +9,7 @@ app.use(expressConst.json());
 //routes
 app.use('/api/notas', require('./routes/notas'));
 
-//Para saber que el pod de okteto sigue vivo
+//Para saber que el pod de okteto sigue vivo.
 app.get("localhost:3000/api/v1/healthz",(req,res)=>{
     res.sendStatus(200);
 });
