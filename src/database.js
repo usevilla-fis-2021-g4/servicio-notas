@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //const url = "mongodb://localhost/NotasDatabase";
-const url = "mongodb://mongo/NotasDatabase";
+const url = "mongodb://mongo:27017/NotasDatabase";
 mongoose.connect(url ,{ 
     useNewUrlParser: true,
     useUnifiedTopology: true
