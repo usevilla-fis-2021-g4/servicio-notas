@@ -4,7 +4,7 @@ const app = expressConst();
 
 const BASE_API_PATH='/api/v1';
 //settings
-app.set('port',3000);
+app.set('port', (process.env.PORT || 3000 ));
 //middlewares, hace que dos servidores intercambien datos entre ellos
 app.use(cors());
 app.use(expressConst.json());
