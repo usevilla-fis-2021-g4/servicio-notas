@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-//const url = (process.env.MONGO_URL ||"mongodb://localhost/NotasDatabase"); // Para arrancar en localhost
+//const url = "mongodb://localhost/NotasDatabase"; // Para arrancar en localhost
 const url = (process.env.MONGO_URL ||"mongodb://mongo/NotasDatabase"); //Para arrancar el docker o deploy en okteto
 mongoose.connect(url ,{ 
     useNewUrlParser: true,
