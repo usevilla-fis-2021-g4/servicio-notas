@@ -1,4 +1,4 @@
-name: ratings
+name: notas
 services:
   mongodb:
     image: mongo
