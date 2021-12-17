@@ -16,9 +16,12 @@ notasControlObject.getNotas = async (req, res) => {
 
 //Metodo POST -- Inserta notas
 notasControlObject.postNotas = async (req, res) =>{
-    const {nota} = req.body;
+    const {nota,asignatura,alumno} = req.body;
+
     let nuevaNota = new modeloNotas({
-        nota : nota
+        nota : nota,
+        asignatura:asignatura,
+        alumno:alumno
     });
     console.log(nuevaNota);
     await nuevaNota.save();

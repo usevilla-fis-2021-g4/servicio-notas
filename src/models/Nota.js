@@ -5,12 +5,10 @@ var esquemaNotas = new Schema({
         type:String    
     },
     asignatura:{
-        type: String,
-        required: true 
+        type: String, 
     },
     alumno:{
         type: String,
-        required: true
     }
 });
 
