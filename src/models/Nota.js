@@ -1,13 +1,13 @@
-const {Schema , model } = require('mongoose');
+var {Schema , model } = require('mongoose');
 
-const esquemaNotas = new Schema({
+var esquemaNotas = new Schema({
     nota : {
         type:String    
     },
-    asignaturas:{
+    asignatura:{
         type:String
     },
-    alumnos:{
+    alumno:{
         type:String
     }
 });
