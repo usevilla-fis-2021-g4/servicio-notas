@@ -20,7 +20,9 @@ db.on("error", ( ) => {
 module.exports =  mongoose;
 */
 const mongoose = require("mongoose");
-const DB_URL = process.env.MONGO_URL || "mongodb://mongodb:27017";
+const DB_URL = process.env.MONGO_URL || "mongodb://mongodb:27017"; //okteto
+//const DB_URL = process.env.MONGO_URL || "mongodb://localhost:27017"; //local
+
 
 const dbConnect = function () {
   const db = mongoose.connection;
