@@ -1,18 +1,17 @@
-const {Schema , model } = require('mongoose');
+var {Schema , model } = require('mongoose');
 
-const esquemaNotas = new Schema({
+var esquemaNotas = new Schema({
     nota : {
-        type:String,
-        require:true    
+        type:String    
     },
-    asignaturas:[{
-        type:Schema.Types.ObjectId,
-        ref: 'Asignatura'
-    }],
-    alumnos:[{
-        type:Schema.Types.ObjectId,
-        ref: 'Alumno'
-    }]
+    asignatura:{
+        type: String,
+        required: true 
+    },
+    alumno:{
+        type: String,
+        required: true
+    }
 });
 
 module.exports = model('Nota', esquemaNotas);
