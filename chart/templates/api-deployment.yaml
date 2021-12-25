@@ -26,13 +26,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mongodb
-                  key: backendnotas_mongo_url
+                  key: mongo_url
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
           readinessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 20
             periodSeconds: 5
             httpGet:
               path: /api/v1/healthz
