@@ -1,5 +1,5 @@
 deploy:
  - okteto build -t okteto.dev/api:${OKTETO_GIT_COMMIT} .
- - helm upgrade --install backendnotas chart --set tag=${OKTETO_GIT_COMMIT} --set backendnotasMongoUrl=$BACKENDNOTAS_MONGO_URL
+ - helm upgrade --install backendnotas chart --set tag=${OKTETO_GIT_COMMIT} --set mongoUrl=$BACKENDNOTAS_MONGO_URL
  
  #- okteto stack deploy -f mongodb-compose.yml --wait
