@@ -3,9 +3,7 @@ const mongoose = require('mongoose');
 const dbConnection = async()=>{
 
     try{
-        dbUrl= process.env.BACKENDNOTAS_MONGO_URL || 'mongodb+srv://dbUser:ryo5XzXwDIsUCkrT@cluster0.ahojs.mongodb.net/DB_ServicioNotas';
-
-       await mongoose.connect(dbUrl,
+       await mongoose.connect(process.env.MONGO_URL,
         {
             useNewUrlParser: true
         });

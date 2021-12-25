@@ -22,22 +22,23 @@ spec:
         - name: api
           image: {{ .Values.api.image }}:{{ .Values.tag }}
           env:
-            - name: BACKENDNOTAS_MONGO_URL
+            - name: MONGO_URL
               valueFrom:
-                secretKeyRef:
-                  name: mongodb
-                  key: mongo_url
+                secretKeyRef: 
+                    name: mongodb
+                    key: notas_mongo_url
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
           readinessProbe:
-            initialDelaySeconds: 20
+            initialDelaySeconds: 10
             periodSeconds: 1
             httpGet:
               path: /api/v1/healthz
               port: 3000
           livenessProbe:
+            initialDelaySeconds: 10
             periodSeconds: 1
             httpGet:
               path: /api/v1/healthz

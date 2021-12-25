@@ -4,4 +4,4 @@ api:
   replicaCount: 1
   image: okteto.dev/api
 
-mongoUrl: mongodb://mongo/test
+notasMongoUrl: mongodb://mongo/test
