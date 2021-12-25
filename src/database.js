@@ -7,8 +7,7 @@ const dbConnection = async()=>{
 
        await mongoose.connect(dbUrl,
         {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+            useNewUrlParser: true
         });
         console.log('DB Online')
         
@@ -19,6 +18,4 @@ const dbConnection = async()=>{
 
 }
 
-module.exports={
-    dbConnection
-}
+module.exports={dbConnection}
