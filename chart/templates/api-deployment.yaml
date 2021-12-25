@@ -25,14 +25,14 @@ spec:
             - name: MONGO_URL
               valueFrom:
                 secretKeyRef: 
-                    name: mongodb
-                    key: notas_mongo_url
+                  name: mongodb
+                  key: notas_mongo_url
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
           readinessProbe:
-            initialDelaySeconds: 10
+            initialDelaySeconds: 30
             periodSeconds: 1
             httpGet:
               path: /api/v1/healthz

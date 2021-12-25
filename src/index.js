@@ -20,7 +20,7 @@ app.use('/api/v1/notas', require('./routes/notas'));
 
 
 //Escuchar peticiones
-
-app.listen(process.env.PORT, ()=>{
-    console.log('Servidor funcionando en el puerto:', process.env.PORT );
+const port=3000
+app.listen(port, ()=>{
+    console.log('Servidor funcionando en el puerto:', port );
 })
