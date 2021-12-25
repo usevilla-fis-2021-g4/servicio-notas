@@ -1,49 +1,118 @@
-const notasControlObject = {};
-
-//export el modelo de datos
-const modeloNotas = require('../models/Nota');
+const {response} = require('express');
+const Nota = require('../models/Nota');
 
 //Metodo GET -- Obtiene notas
-notasControlObject.getNotas = async (req, res) => {
+const getNotas = async (req, res=response) => {
     try {
 
-        const notas =  await modeloNotas.find(); 
-        res.json(notas)
+        const notas =  await Nota.find(); 
+        res.json({
+            ok:true,
+            notas
+        })
     } catch (err) {
         console.log(err);
     }
 }
 
 //Metodo POST -- Inserta notas
-notasControlObject.postNotas = async (req, res) =>{
-    const {nota,asignatura,alumno} = req.body;
+const postNota = async (req, res=response) =>{
+    
+    const nota= new Nota(req.body);
+    console.log(nota);
 
-    let nuevaNota = new modeloNotas({
-        nota : nota,
-        asignatura:asignatura,
-        alumno:alumno
-    });
-    console.log(nuevaNota);
-    await nuevaNota.save();
-    res.json({message : 'La Nota ha sido guardada'})
+
+    try{
+       
+        const notaGuardada= await nota.save();
+
+        res.status(201).json({
+            ok:true,
+            calificacion: notaGuardada
+        })
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            ok:false,
+            msg:'Hable con el administrador'
+        })
+    }
 }
 
 //Metodo GET - Obtiene una nota dado un identificador
-notasControlObject.getNotaPorId = async (req, res) => {
-    let notaPorId =  await modeloNotas.findById(req.params.id); 
-    console.log(notaPorId);
-    res.json(notaPorId)
+    const getNotaPorId = async (req, res=response) => {
+        let notaPorId =  await modeloNotas.findById(req.params.id); 
+        console.log(notaPorId);
+        res.json({
+            ok:true,
+            notaPorId
+        });
 }
 
 //Metodo DELETE
-notasControlObject.deleteNota = async (req, res) => {
-    let notaPorId =  await modeloNotas.findByIdAndDelete(req.params.id); 
-    res.json({message : 'La Nota ha sido eliminada'})
+const deleteNota = async (req, res=response) => {
+   
+    const notaId = req.params.id;
+    try{
+    const nota = await Nota.findById(notaId);
+
+        if(!nota){
+            return res.status(404).json({
+                ok:false,
+                msg:'La nota no existe por ese id'
+            });
+        }
+
+
+    await Nota.findByIdAndDelete(notaId);
+
+    res.json({
+        ok:true,
+    })
+
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            ok:false,
+            msg:'Hable con el administrador'
+        })
+    }
 }
 
 //Metodo PUT -- modifica Notas
-notasControlObject.putNotas = async (req, res) => {
-    let notaPorId = await modeloNotas.findByIdAndUpdate(req.params.id , req.body);
-    res.json({message : 'La Nota ha sido modificada'})
+const putNota = async (req, res=response) => {
+    
+    const notaId = req.params.id;
+    try{
+        const nota = await Nota.findById(notaId);
+
+        if(!nota){
+            return res.status(404).json({
+                ok:false,
+                msg:'La nota no existe por ese id'
+            });
+        }
+
+    const nuevaNota = {
+        ...req.body
+    }
+
+    const notaActualizada = await Nota.findByIdAndUpdate(notaId,nuevaNota);
+
+    res.status(201).json({
+        ok:true,
+        notaActualizada
+    })
+
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({
+            ok:false,
+            msg:'Hable con el administrador'
+        })
+    }
 }
-module.exports = notasControlObject;
+module.exports = {getNotas,getNotaPorId,postNota,putNota,deleteNota};

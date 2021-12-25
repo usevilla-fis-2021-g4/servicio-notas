@@ -21,11 +21,18 @@ spec:
       containers:
         - name: api
           image: {{ .Values.api.image }}:{{ .Values.tag }}
+          env:
+            - name: BACKENDNOTAS_MONGO_URL
+            valueFrom:
+              secretKeyRef:
+                name: mongodb
+                key: backendnotas_mongo_url
           ports:
             - name: http
               containerPort: 3000
               protocol: TCP
           readinessProbe:
+            initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
               path: /api/v1/healthz

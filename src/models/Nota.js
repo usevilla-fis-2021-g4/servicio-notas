@@ -2,13 +2,16 @@ var {Schema , model } = require('mongoose');
 
 var esquemaNotas = new Schema({
     nota : {
-        type:String    
+        type:String,
+        required:true    
     },
     asignatura:{
         type: String, 
+        required:true
     },
     alumno:{
         type: String,
+        required:true
     }
 });
 

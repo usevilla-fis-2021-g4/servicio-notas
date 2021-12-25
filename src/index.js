@@ -1,25 +1,27 @@
-/*const app = require('./app');
-require('./database');
-async function main() {
-    await app.listen(app.get('port'));
-    console.log('Servidor en el puerto',app.get('port'));
-}
+const express = require('express');
+const { dbConnection } = require('./database');
+require('dotenv').config();
+const cors = require('cors');
 
-main();
-*/
-const app = require("./app");
-const dbConnect = require("./database");
+//Creamos el servidor de express
+const app=express();
 
-var port = (process.env.PORT || 3000);
+//Base de Datos
+dbConnection();
 
-console.log("Starting API server at " + port);
+//CORS
+app.use(cors());
 
-dbConnect().then(
-  () => {
-    app.listen(port);
-    console.log("Server ready!");
-  },
-  (err) => {
-    console.log("Connection error: " + err);
-  }
-);
+//Lectura y Parseo del body
+app.use(express.json());
+
+//TODO CRUD: Notas
+app.use('/api/v1/notas', require('./routes/notas'));
+
+
+//Escuchar peticiones
+const port = process.env.PORT || 3000;
+
+app.listen(port, ()=>{
+    console.log('Servidor corriendo en el puerto', port );
+})
