@@ -31,26 +31,6 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
-          readinessProbe:
-            initialDelaySeconds: 10
-            periodSeconds: 1
-            httpGet:
-              scheme: HTTP
-              path: /api/v1/healthz
-              port: 3000
-          livenessProbe:
-          exec:
-            command:
-            - /bin/sh
-            - -c
-            - "/usr/bin/my-application-jobs --alive"
-          initialDelaySeconds: 10
-          periodSeconds: 5            initialDelaySeconds: 10
-            initialDelaySeconds: 10
-            periodSeconds: 1
-            httpGet:
-              path: /api/v1/healthz
-              port: 3000            initialDelaySeconds: 10 
           readinessProbe: 
             initialDelaySeconds: 10 
             periodSeconds: 1 
