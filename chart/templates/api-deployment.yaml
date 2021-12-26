@@ -38,7 +38,6 @@ spec:
               path: /api/v1/healthz
               port: 3000
           livenessProbe:
-            initialDelaySeconds: 10
             periodSeconds: 1
             httpGet:
               path: /api/v1/healthz
