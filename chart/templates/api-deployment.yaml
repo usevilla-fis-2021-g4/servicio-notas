@@ -35,11 +35,11 @@ spec:
             initialDelaySeconds: 10 
             periodSeconds: 1 
             httpGet: 
-              path: /api/v1/healthz 
+              path: /api/v1/notas
               port: 3000 
           livenessProbe: 
             initialDelaySeconds: 10  
             periodSeconds: 1 
             httpGet: 
-              path: /api/v1/healthz 
+              path: /api/v1/notas
               port: 3000 
