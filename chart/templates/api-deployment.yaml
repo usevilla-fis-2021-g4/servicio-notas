@@ -25,7 +25,6 @@ spec:
             - name: MONGO_URL
               valueFrom:
                 secretKeyRef: 
-                  name: mongodb
                   name: notasMongoUrl
                   key: notas_mongo_url
           ports:
@@ -51,4 +50,14 @@ spec:
             periodSeconds: 1
             httpGet:
               path: /api/v1/healthz
-              port: 3000
+              port: 3000            initialDelaySeconds: 10 
+            periodSeconds: 1 
+            httpGet: 
+              path: /api/v1/healthz 
+              port: 3000 
+          livenessProbe: 
+            initialDelaySeconds: 10  
+            periodSeconds: 1 
+            httpGet: 
+              path: /api/v1/healthz 
+              port: 3000 
