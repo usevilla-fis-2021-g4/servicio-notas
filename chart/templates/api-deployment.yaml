@@ -26,6 +26,7 @@ spec:
               valueFrom:
                 secretKeyRef: 
                   name: notasMongoUrl
+                  name: mongodb
                   key: notas_mongo_url
           ports:
             - name: http
