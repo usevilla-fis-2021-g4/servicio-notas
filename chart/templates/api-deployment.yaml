@@ -45,6 +45,7 @@ spec:
             httpGet:
               path: /api/v1/healthz
               port: 3000          exec:
+          exec:
             command:
             - /bin/sh
             - -c
