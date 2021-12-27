@@ -42,9 +42,9 @@ const postNota = async (req, res=response) =>{
 
 //Metodo GET - Obtiene una nota dado un identificador
     const getNotaPorId = async (req, res=response) => {
-        let notaPorId =  await modeloNotas.findById(req.params.id); 
+        let notaPorId =  await Nota.findById(req.params.id); 
         console.log(notaPorId);
-        res.json({
+        res.status(200).json({
             ok:true,
             notaPorId
         });
