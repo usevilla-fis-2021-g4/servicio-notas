@@ -11,8 +11,8 @@ const dbConnection = async()=>{
         {
             useNewUrlParser: true
         });
-        console.log(process.env.MONGO_URL) //TODO Muestra por consola el MONGO_URL de la base de datos. Undefined en local y al desplegar en okteto se conecta correctamente, pero
-        console.log('DB Online')           //no despliega (Consume toda la RAM y colapsa). No hallado todavia la solucion
+        console.log(process.env.MONGO_URL) 
+        console.log('DB Online')
         
     }catch(error){
         console.log(error);
