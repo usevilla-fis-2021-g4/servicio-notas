@@ -26,7 +26,7 @@ spec:
               valueFrom:
                 secretKeyRef: 
                   name: mongodb
-                  key: notas_mongo_url
+                  key: mongo_url_servicio_notas
           ports:
             - name: http
               containerPort: 3000
