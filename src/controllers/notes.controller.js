@@ -6,10 +6,10 @@ const getNotas = async (req, res=response) => {
     try {
 
         const notas =  await Nota.find(); 
-        res.json({
-            ok:true,
+        return res.status(200).json(notas);
+        /*res.json({
             notas
-        })
+        })*/
     } catch (err) {
         console.log(err);
     }
@@ -26,10 +26,9 @@ const postNota = async (req, res=response) =>{
        
         const notaGuardada= await nota.save();
 
-        res.status(201).json({
-            ok:true,
-            calificacion: notaGuardada
-        })
+        res.status(201).json(
+            notaGuardada
+        )
 
     }catch(error){
         console.log(error);
@@ -44,10 +43,9 @@ const postNota = async (req, res=response) =>{
     const getNotaPorId = async (req, res=response) => {
         let notaPorId =  await Nota.findById(req.params.id); 
         console.log(notaPorId);
-        res.status(200).json({
-            ok:true,
+        res.status(200).json(
             notaPorId
-        });
+        );
 }
 
 //Metodo DELETE
@@ -67,8 +65,9 @@ const deleteNota = async (req, res=response) => {
 
     await Nota.findByIdAndDelete(notaId);
 
-    res.json({
+    res.status(204).json({
         ok:true,
+        msg:"nota borrada satisfactoriamente."
     })
 
 
@@ -101,10 +100,9 @@ const putNota = async (req, res=response) => {
 
     const notaActualizada = await Nota.findByIdAndUpdate(notaId,nuevaNota);
 
-    res.status(201).json({
-        ok:true,
+    res.status(201).json(
         notaActualizada
-    })
+    );
 
 
     }catch(error){

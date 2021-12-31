@@ -8,7 +8,7 @@ const app=express();
 
 //Escuchar peticiones
 const port=3000
-app.listen(port, ()=>{
+const server=app.listen(port, ()=>{
     console.log('Servidor funcionando en el puerto:', port );
 })
 
@@ -26,4 +26,4 @@ app.use('/api/v1/notas', require('./routes/notas'));
 
 
 
-module.exports=app;
+module.exports={app,server};
