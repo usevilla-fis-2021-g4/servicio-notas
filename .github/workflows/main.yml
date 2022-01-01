@@ -9,7 +9,10 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
+    uses: usevilla-fis-2021-g4/servicio-notas/.github/workflows/tests.yml@main
+  deploy:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
