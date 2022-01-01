@@ -3,7 +3,8 @@ const mongoose= require('mongoose');
 const Nota= require('../src/models/Nota');
 
 
-const {notasIniciales,api, GetAllNombresAlumnosFromNotas} = require('./helpers');
+const {notasIniciales,api, GetAllNombresAlumnosFromNotas,user} = require('./helpers');
+const ApiKey = require('../apikeys');
 
 
 beforeEach(async()=>{
@@ -14,6 +15,11 @@ beforeEach(async()=>{
 
     const nota2= new Nota(notasIniciales[1]);
     await nota2.save();
+
+    auth= jest.spyOn(ApiKey, "findOne");
+    auth.mockImplementation((query,callback)=>{
+        callback(null, new ApiKey(user));
+    });
 })
 
 describe('GET /apinotas/v1/notas',()=>{
@@ -22,6 +28,7 @@ describe('GET /apinotas/v1/notas',()=>{
     test('Las notas se devuelven en un formato json', async()=>{
         await api
             .get('/apinotas/v1/notas/')
+            .set('apikey','1')
             .expect(200)
             .expect('Content-Type', /application\/json/)
     });
@@ -30,12 +37,13 @@ describe('GET /apinotas/v1/notas',()=>{
     test('Las notas se devuelven como un json. FALTA /v1 . Tiene que devolver 404', async()=>{
         await api
             .get('/apinotas/notas/')
+            .set('apikey','1')
             .expect(404) //Con esto dara error, puesto que debería devolver un 200 ya que funciona correctamente.
             
     });
     //GET NOTAS. Se espera que las notas sean devueltas. Test Passed
     test('Devuelven las notas del servidor', async()=>{
-        const response= await api.get('/apinotas/v1/notas');
+        const response= await api.get('/apinotas/v1/notas').set('apikey','1');
     
         expect(response.body).toHaveLength(notasIniciales.length)
     
@@ -43,7 +51,7 @@ describe('GET /apinotas/v1/notas',()=>{
     
     //Se espera que la primera nota se refiere a un alumno cuyo nombre es Illo. Test Passed
     test('La primera nota se refiere al alumno Illo', async()=>{
-        const response= await api.get('/apinotas/v1/notas');
+        const response= await api.get('/apinotas/v1/notas').set('apikey','1');
         expect(response.body[0].alumno).toBe("Illo");
     });
     
@@ -66,6 +74,7 @@ describe('POST /apinotas/v1/notas',()=>{
         };
         await api
             .post('/apinotas/v1/notas')
+            .set('apikey','1')
             .send(newNota)
             .expect(201)
             .expect('Content-Type', /application\/json/)
@@ -84,11 +93,12 @@ describe('POST /apinotas/v1/notas',()=>{
         };
         await api
             .post('/apinotas/v1/notas')
+            .set('apikey','1')
             .send(newNota)
             .expect(400)
             .expect('Content-Type', /application\/json/)
     
-            const response = await api.get('/apinotas/v1/notas');
+            const response = await api.get('/apinotas/v1/notas').set('apikey','1');
             expect(response.body).toHaveLength(notasIniciales.length)
     })
 
@@ -105,6 +115,7 @@ describe('DELETE /apinotas/v1/notas/id', ()=>{
     
         await api
         .delete(`/apinotas/v1/notas/${notaToDelete._id}`)
+        .set('apikey','1')
         .expect(204)
     
         const {response:segundaResponse} =  await GetAllNombresAlumnosFromNotas();
@@ -116,6 +127,7 @@ describe('DELETE /apinotas/v1/notas/id', ()=>{
     test("Una nota que no puede ser borrada si se le pasa una id erronea, como 1234", async()=>{
         await api
             .delete('/apinotas/v1/notas/1234')
+            .set('apikey','1')
             .expect(500)
     
             const {response:segundaResponse} =  await GetAllNombresAlumnosFromNotas();
@@ -143,6 +155,7 @@ describe('PUT /apinotas/v1/notas/id', ()=>{
     
         await api    
         .put(`/apinotas/v1/notas/${notaToPut.id}`)
+        .set('apikey','1')
         .send(newNota)
         const {response:segundaResponse,alumnos} =  await GetAllNombresAlumnosFromNotas();
         expect(segundaResponse.body).toHaveLength(notasIniciales.length)
