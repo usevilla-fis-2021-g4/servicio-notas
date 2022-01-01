@@ -1,5 +1,5 @@
-const dbConnection = require("../src/database");
-const Nota = require('../src/models/Nota');
+const dbConnection = require("../../src/database");
+const Nota = require('../../src/models/Nota');
 const mongoose = require('mongoose');
 
 
