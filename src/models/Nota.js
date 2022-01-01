@@ -15,4 +15,6 @@ var esquemaNotas = new Schema({
     }
 });
 
-module.exports = model('Nota', esquemaNotas);
+const Nota = model('Nota', esquemaNotas);
+
+module.exports = Nota;

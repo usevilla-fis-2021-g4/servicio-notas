@@ -1,10 +1,16 @@
 const express = require('express');
-const { dbConnection } = require('./database');
+const dbConnection  = require('./database');
 require('dotenv').config();
 const cors = require('cors');
 
 //Creamos el servidor de express
 const app=express();
+
+//Escuchar peticiones
+const port=3000
+const server=app.listen(port, ()=>{
+    console.log('Servidor funcionando en el puerto:', port );
+})
 
 //Base de Datos
 dbConnection();
@@ -19,8 +25,5 @@ app.use(express.json());
 app.use('/api/v1/notas', require('./routes/notas'));
 
 
-//Escuchar peticiones
-const port=3000
-app.listen(port, ()=>{
-    console.log('Servidor funcionando en el puerto:', port );
-})
+
+module.exports={app,server};
