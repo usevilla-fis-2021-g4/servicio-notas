@@ -2,6 +2,6 @@ tag: dev
 
 api:
   replicaCount: 1
-  image: okteto.dev/apinotas
+  image: okteto.dev/api
 
 notasMongoUrl: mongodb://mongo/test
