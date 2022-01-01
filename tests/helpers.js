@@ -20,7 +20,7 @@ const notasIniciales = [
 
 
 const GetAllNombresAlumnosFromNotas = async()=>{
-    const response = await api.get('/api/v1/notas');
+    const response = await api.get('/apinotas/v1/notas');
     return{
        alumnos:response.body.map(nota=> nota.alumno),
        response

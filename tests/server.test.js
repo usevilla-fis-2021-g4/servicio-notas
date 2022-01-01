@@ -16,12 +16,12 @@ beforeEach(async()=>{
     await nota2.save();
 })
 
-describe('GET /api/v1/notas',()=>{
+describe('GET /apinotas/v1/notas',()=>{
 
     //Se espera un Json. Test Passed
     test('Las notas se devuelven en un formato json', async()=>{
         await api
-            .get('/api/v1/notas/')
+            .get('/apinotas/v1/notas/')
             .expect(200)
             .expect('Content-Type', /application\/json/)
     });
@@ -29,13 +29,13 @@ describe('GET /api/v1/notas',()=>{
     //Tiene que devolver error. Test Failed
     test('Las notas se devuelven como un json. FALTA /v1 . Tiene que devolver 404', async()=>{
         await api
-            .get('/api/notas/')
+            .get('/apinotas/notas/')
             .expect(404) //Con esto dara error, puesto que debería devolver un 200 ya que funciona correctamente.
             
     });
     //GET NOTAS. Se espera que las notas sean devueltas. Test Passed
     test('Devuelven las notas del servidor', async()=>{
-        const response= await api.get('/api/v1/notas');
+        const response= await api.get('/apinotas/v1/notas');
     
         expect(response.body).toHaveLength(notasIniciales.length)
     
@@ -43,7 +43,7 @@ describe('GET /api/v1/notas',()=>{
     
     //Se espera que la primera nota se refiere a un alumno cuyo nombre es Illo. Test Passed
     test('La primera nota se refiere al alumno Illo', async()=>{
-        const response= await api.get('/api/v1/notas');
+        const response= await api.get('/apinotas/v1/notas');
         expect(response.body[0].alumno).toBe("Illo");
     });
     
@@ -55,7 +55,7 @@ describe('GET /api/v1/notas',()=>{
 
 });
 
-describe('POST /api/v1/notas',()=>{
+describe('POST /apinotas/v1/notas',()=>{
     //Test POST. Se espera que haya una nota mas respecto a las iniciales definidas y que en los alumnos ahora contenga el alumno posteado.
     
     test('POST de una nota válida', async()=>{
@@ -65,7 +65,7 @@ describe('POST /api/v1/notas',()=>{
             "asignatura":"Furbo"
         };
         await api
-            .post('/api/v1/notas')
+            .post('/apinotas/v1/notas')
             .send(newNota)
             .expect(201)
             .expect('Content-Type', /application\/json/)
@@ -83,18 +83,18 @@ describe('POST /api/v1/notas',()=>{
             "alumno":"El bicho"
         };
         await api
-            .post('/api/v1/notas')
+            .post('/apinotas/v1/notas')
             .send(newNota)
             .expect(400)
             .expect('Content-Type', /application\/json/)
     
-            const response = await api.get('/api/v1/notas');
+            const response = await api.get('/apinotas/v1/notas');
             expect(response.body).toHaveLength(notasIniciales.length)
     })
 
 });
 
-describe('DELETE /api/v1/notas/id', ()=>{
+describe('DELETE /apinotas/v1/notas/id', ()=>{
     
     //Delete Notas. Se espera que una nota se borre correctamente.
     test('DELETE de una nota', async()=>{
@@ -104,7 +104,7 @@ describe('DELETE /api/v1/notas/id', ()=>{
         const notaToDelete = notas[0];
     
         await api
-        .delete(`/api/v1/notas/${notaToDelete._id}`)
+        .delete(`/apinotas/v1/notas/${notaToDelete._id}`)
         .expect(204)
     
         const {response:segundaResponse} =  await GetAllNombresAlumnosFromNotas();
@@ -115,7 +115,7 @@ describe('DELETE /api/v1/notas/id', ()=>{
     //Una nota que no puede ser borrada si se le pasa una id erronea
     test("Una nota que no puede ser borrada si se le pasa una id erronea, como 1234", async()=>{
         await api
-            .delete('/api/v1/notas/1234')
+            .delete('/apinotas/v1/notas/1234')
             .expect(500)
     
             const {response:segundaResponse} =  await GetAllNombresAlumnosFromNotas();
@@ -125,7 +125,7 @@ describe('DELETE /api/v1/notas/id', ()=>{
 
 });
 
-describe('PUT /api/v1/notas/id', ()=>{
+describe('PUT /apinotas/v1/notas/id', ()=>{
     //PUT
     test('PUT de una nota. Se debe esperar que haya las mismas notas en la segunda que en la primera respuesta  ', async()=>{
     
@@ -142,7 +142,7 @@ describe('PUT /api/v1/notas/id', ()=>{
         }
     
         await api    
-        .put(`/api/v1/notas/${notaToPut.id}`)
+        .put(`/apinotas/v1/notas/${notaToPut.id}`)
         .send(newNota)
         const {response:segundaResponse,alumnos} =  await GetAllNombresAlumnosFromNotas();
         expect(segundaResponse.body).toHaveLength(notasIniciales.length)

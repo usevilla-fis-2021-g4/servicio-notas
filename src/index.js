@@ -22,7 +22,7 @@ app.use(cors());
 app.use(express.json());
 
 //TODO CRUD: Notas
-app.use('/api/v1/notas', require('./routes/notas'));
+app.use('/apinotas/v1/notas', require('./routes/notas'));
 
 
 
