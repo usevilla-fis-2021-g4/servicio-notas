@@ -25,7 +25,7 @@ spec:
             - name: MONGO_URL
               valueFrom:
                 secretKeyRef: 
-                  name: mongodbservicionotas
+                  name: mongodb
                   key: mongo_url_servicio_notas
           ports:
             - name: http
