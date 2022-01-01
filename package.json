@@ -4,9 +4,9 @@
   "description": "API Notas",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest  --verbose --silent",
+    "test": "jest  --verbose --silent",
     "test:watch":"npm run test -- --watch",
-    "integration":"cross-env NODE_ENV=test jest -c jest.integration.config.js --verbose --silent",
+    "integration":"jest -c jest.integration.config.js --verbose --silent",
     "dev": "nodemon src/index.js",
     "start": "nodemon src/index.js"
   },
