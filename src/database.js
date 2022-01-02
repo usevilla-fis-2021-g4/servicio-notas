@@ -31,6 +31,6 @@ const dbConnection = function(){
 }
 
 console.log(process.env.MONGO_URL) 
-console.log('DB Online')
+console.log('DB Mongo Atlas Online')
 
 module.exports=dbConnection;

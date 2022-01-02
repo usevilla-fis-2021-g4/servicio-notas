@@ -5,6 +5,32 @@ const cors = require('cors');
 const passport = require('passport');
 require('../passport');
 
+const path= require("path");
+
+//Configuracion del swagger
+const swaggerUI= require('swagger-ui-express');
+const swaggerJsDoc= require('swagger-jsdoc');
+const swaggerSpec={
+    definition:{
+        openapi: "3.0.0",
+        info:{
+            title:"Servicio Notas API",
+            version:"1.0.0"
+        },
+        servers:[
+            {
+                url:"http://localhost:3000",
+                description:"Servidor de desarrollo en localhost."
+            },
+            {
+                url:"https://api-usevilla-fis-2021-g4-juancarlosestradanieto.cloud.okteto.net/",
+                description:"Servidor de despliegue en Okteto."
+            }
+        ]
+    },
+    apis:[`${path.join(__dirname,"./routes/notas.js")}`]
+}
+
 //Creamos el servidor de express
 const app=express();
 
@@ -27,8 +53,18 @@ app.use(express.json());
 
 app.use(passport.initialize());
 
-//TODO CRUD: Notas
+
+//CRUD: Notas
 app.use('/apinotas/v1/notas', require('./routes/notas'));
+
+//swaggerDoc
+app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
+
+//Bienvenida
+app.get('/', (req,res)=>{
+    res.send("<html><body><h1>Bienvenido a la API del grupo 4 de la asignatura de FIS. Servicio Notas</h1></body></html>"+
+    "<html><body><h2>Añade a la barra de herramientas: /api-doc para ver las funcionalidades de la API de Servicio Notas.</h2></body></html>")
+})
 
 
 
