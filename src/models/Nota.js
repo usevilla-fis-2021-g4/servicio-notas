@@ -12,7 +12,11 @@ var esquemaNotas = new Schema({
     alumno:{
         type: String,
         required:true
-    }
+    },
+    imagenIdentificacion: {
+        type: String,
+        required: false
+    },
 });
 
 const Nota = model('Nota', esquemaNotas);

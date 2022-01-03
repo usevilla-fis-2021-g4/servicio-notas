@@ -1,13 +1,14 @@
 const express = require('express');
 const dbConnection  = require('./database');
 require('dotenv').config();
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const passport = require('passport');
 require('../passport');
 
-const path= require("path");
 
 //Configuracion del swagger
+const path= require("path");
 const swaggerUI= require('swagger-ui-express');
 const swaggerJsDoc= require('swagger-jsdoc');
 const swaggerSpec={
@@ -47,7 +48,8 @@ dbConnection();
 app.use(cors());
 
 //Lectura y Parseo del body
-app.use(express.json());
+app.use(express.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 //Uso del passport
 
