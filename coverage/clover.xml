@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641118999875" clover="3.2.0">
-  <project timestamp="1641118999875" name="All files">
-    <metrics statements="56" coveredstatements="56" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1" elements="59" coveredelements="58" complexity="0" loc="56" ncloc="56" packages="2" files="2" classes="2"/>
+<coverage generated="1641301472496" clover="3.2.0">
+  <project timestamp="1641301472496" name="All files">
+    <metrics statements="60" coveredstatements="60" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1" elements="63" coveredelements="62" complexity="0" loc="60" ncloc="60" packages="2" files="2" classes="2"/>
     <package name="src">
       <metrics statements="36" coveredstatements="36" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="database.js" path="C:\Users\usuario\Desktop\Manu García\Master\FIS\Organizacion\Servicio-notas\src\database.js">
+      <file name="database.js" path="C:\Users\usuario\Desktop\Manu García\Master\FIS\servicio-notas\src\database.js">
         <metrics statements="36" coveredstatements="36" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -45,9 +45,9 @@
       </file>
     </package>
     <package name="src.models">
-      <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Nota.js" path="C:\Users\usuario\Desktop\Manu García\Master\FIS\Organizacion\Servicio-notas\src\models\Nota.js">
-        <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Nota.js" path="C:\Users\usuario\Desktop\Manu García\Master\FIS\servicio-notas\src\models\Nota.js">
+        <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -68,6 +68,10 @@
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
   </project>

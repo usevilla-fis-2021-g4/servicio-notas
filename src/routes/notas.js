@@ -417,7 +417,7 @@ router.delete('/:id',
  *        - ApiKeyAuth: []
  */
 
-    router.get(':id/imagen',
+    router.get('/:id/imagen',
         [passport.authenticate("localapikey", {session: false}), upload.single('imagen')],
             async (request, response) => {
             console.log(Date() + "GET - /apinotas/v1/:id/imagen");
