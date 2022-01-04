@@ -25,6 +25,11 @@ const Nota = require('../models/Nota');
 const { notEqual } = require('assert');
 const unlinkFile = util.promisify(fs.unlink);
 
+
+router.get("/apinotas/v1/healthz", (req, res=response) => {
+    res.sendStatus(200);
+});
+
 //ESQUEMA NOTA
 /**
  * @swagger
