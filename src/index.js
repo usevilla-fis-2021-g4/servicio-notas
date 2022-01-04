@@ -56,6 +56,11 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 app.use(passport.initialize());
 
 
+app.get("/apinotas/v1/healthz", (req, res=response) => {
+    res.sendStatus(200);
+});
+
+
 //CRUD: Notas
 app.use('/apinotas/v1/notas', require('./routes/notas'));
 
