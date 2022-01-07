@@ -5,3 +5,6 @@ apinotas:
   image: okteto.dev/apinotas
 
 notasMongoUrl: mongodb://mongo/test
+
+AWS_ACCESS_KEY_SERVICIO_NOTAS: notassedeberiasobreescribirconelhelmdeloktetopipeline
+AWS_SECRET_KEY_SERVICIO_NOTAS: notassedeberiasobreescribirconelhelmdeloktetopipeline2

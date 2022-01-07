@@ -1,13 +1,14 @@
 const express = require('express');
 const dbConnection  = require('./database');
 require('dotenv').config();
+const bodyParser = require("body-parser");
 const cors = require('cors');
 const passport = require('passport');
 require('../passport');
 
-const path= require("path");
 
 //Configuracion del swagger
+const path= require("path");
 const swaggerUI= require('swagger-ui-express');
 const swaggerJsDoc= require('swagger-jsdoc');
 const swaggerSpec={
@@ -23,7 +24,7 @@ const swaggerSpec={
                 description:"Servidor de desarrollo en localhost."
             },
             {
-                url:"https://api-usevilla-fis-2021-g4-juancarlosestradanieto.cloud.okteto.net/",
+                url:"https://api-usevilla-fis-2021-g4-mgrmanu10.cloud.okteto.net/",
                 description:"Servidor de despliegue en Okteto."
             }
         ]
@@ -47,11 +48,17 @@ dbConnection();
 app.use(cors());
 
 //Lectura y Parseo del body
-app.use(express.json());
+app.use(express.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 //Uso del passport
 
 app.use(passport.initialize());
+
+
+app.get("/apinotas/v1/healthz", (req, res=response) => {
+    res.sendStatus(200);
+});
 
 
 //CRUD: Notas
