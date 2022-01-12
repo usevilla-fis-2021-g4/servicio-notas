@@ -69,8 +69,8 @@ app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)))
 
 //Bienvenida
 app.get('/', (req,res)=>{
-    res.send("<html><body><h1>Bienvenido a la API del grupo 4 de la asignatura de FIS. Servicio Notas</h1></body></html>"+
-    "<html><body><h2>Añade a la barra de herramientas: /api-doc para ver las funcionalidades de la API de Servicio Notas.</h2></body></html>")
+    res.send("<html><body><h1>Bienvenido a la API del grupo 4 de la asignatura de FIS. </h1></body></html>"+
+    "<html><body><h2>Añade a la barra de herramientas: /api-doc para ver las funcionalidades de la API.</h2></body></html>")
 })
 
 
