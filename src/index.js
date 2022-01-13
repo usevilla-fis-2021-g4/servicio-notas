@@ -20,12 +20,8 @@ const swaggerSpec={
         },
         servers:[
             {
-                url:"http://localhost:3000",
-                description:"Servidor de desarrollo en localhost."
-            },
-            {
-                url:"https://api-usevilla-fis-2021-g4-mgrmanu10.cloud.okteto.net/",
-                description:"Servidor de despliegue en Okteto."
+                url:"apikey Servicio Notas",
+                description:"0ffe8ae7-50c5-40d8-9e78-ea2ce989c22c"
             }
         ]
     },

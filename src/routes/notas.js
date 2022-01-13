@@ -150,7 +150,7 @@ router.post('/',
 //GET POR ID de NOTA
 /**
  * @swagger
- * /api/v1/notas/{id}:
+ * /apinotas/v1/notas/{id}:
  *    get:
  *      summary: Retorna una nota al dar una ID de la nota.
  *      tags: [Nota]
@@ -189,7 +189,7 @@ router.get('/:id',
 //PUT NOTA
 /**
  * @swagger
- * /api/v1/notas/{id}:
+ * /apinotas/v1/notas/{id}:
  *    get:
  *      summary: Retorna una nota al dar una ID de la nota.
  *      tags: [Nota]
@@ -221,7 +221,7 @@ router.get('/:id',
 //PUT NOTA
 /**
  * @swagger
- * /api/v1/notas/{id}:
+ * /apinotas/v1/notas/{id}:
  *    put:
  *      summary: Actualiza una nota al dar una ID de la nota.
  *      tags: [Nota]
@@ -268,7 +268,7 @@ router.put('/:id',
 //DELETE NOTA
 /**
  * @swagger
- * /api/v1/notas/{id}:
+ * /apinotas/v1/notas/{id}:
  *    delete:
  *      summary: Elimina una nota al dar una ID de la nota.
  *      tags: [Nota]
