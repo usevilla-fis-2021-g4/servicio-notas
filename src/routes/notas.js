@@ -190,8 +190,8 @@ router.get('/:id',
 /**
  * @swagger
  * /apinotas/v1/notas/{id}:
- *    get:
- *      summary: Retorna una nota al dar una ID de la nota.
+ *    patch:
+ *      summary: Actualiza una nota al recibir un id válido.
  *      tags: [Nota]
  *      parameters:
  *        - in: path
@@ -199,23 +199,25 @@ router.get('/:id',
  *          schema:
  *            type: string
  *          required: true
- *          description: Id de la Nota correspondiente en la Base de Datos.
+ *          description: Id de la Nota.
  *      requestBody:
- *          required: true
- *          content:
+ *        required: true
+ *        content:
+ *          application/json:
  *            schema:
  *              type: object
  *              $ref: '#/components/schemas/Nota'
- *
  *      responses:
  *        401: 
  *          $ref: '#/components/responses/UnauthorizedError'
  *        500: 
- *          description: Error al intentar consultar la Nota (problemas con el servidor).
+ *          description: Error al intentar actualizar la Nota (problemas con el servidor).
  *        404: 
- *          description: Nota no encontrada.
- *        200: 
- *          description: Nota consultada con éxito.
+ *          description: Nota no encontrado.
+ *        409: 
+ *          description: La identificación ya está registrada.
+ *        201: 
+ *          description: Nota actualizada con éxito.
  *          content: 
  *            application/json:
  *              schema:
@@ -224,7 +226,6 @@ router.get('/:id',
  *      security:
  *        - ApiKeyAuth: []
  */
-
 
 router.put('/:id',
     [//middlewares
