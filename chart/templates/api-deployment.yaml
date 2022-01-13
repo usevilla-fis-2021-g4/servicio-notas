@@ -30,7 +30,11 @@ spec:
             - name: AWS_ACCESS_KEY_SERVICIO_NOTAS
               value: {{ .Values.AWS_ACCESS_KEY_SERVICIO_NOTAS }}
             - name: AWS_SECRET_KEY_SERVICIO_NOTAS
-              value: {{ .Values.AWS_SECRET_KEY_SERVICIO_NOTAS }}                  
+              value: {{ .Values.AWS_SECRET_KEY_SERVICIO_NOTAS }}
+            - name: AWS_BUCKET_NAME_SERVICIO_NOTAS
+              value: {{ .Values.AWS_BUCKET_NAME_SERVICIO_NOTAS }}
+            - name: AWS_BUCKET_REGION_SERVICIO_NOTAS
+              value: {{ .Values.AWS_BUCKET_REGION_SERVICIO_NOTAS }}                                
           ports:
             - name: http
               containerPort: 3000

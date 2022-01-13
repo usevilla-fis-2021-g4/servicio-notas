@@ -8,3 +8,5 @@ notasMongoUrl: mongodb://mongo/test
 
 AWS_ACCESS_KEY_SERVICIO_NOTAS: notassedeberiasobreescribirconelhelmdeloktetopipeline
 AWS_SECRET_KEY_SERVICIO_NOTAS: notassedeberiasobreescribirconelhelmdeloktetopipeline2
+AWS_BUCKET_NAME_SERVICIO_NOTAS: estosetienequesobrescribir
+AWS_BUCKET_REGION_SERVICIO_NOTAS: estosetienequesobresccribirssdmf
