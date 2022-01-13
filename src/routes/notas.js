@@ -190,7 +190,7 @@ router.get('/:id',
 /**
  * @swagger
  * /apinotas/v1/notas/{id}:
- *    patch:
+ *    put:
  *      summary: Actualiza una nota al recibir un id válido.
  *      tags: [Nota]
  *      parameters:
