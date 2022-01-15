@@ -1,5 +1,7 @@
 # Backend Servicio Notas para Proyecto de FIS
 
+# Para más consultar en la Wiki de este repositorio.
+
 ```
 1º npm install
 ```
